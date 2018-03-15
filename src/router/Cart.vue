@@ -10,12 +10,12 @@
         <template v-for="(item , key) in cartList">
           <yd-checklist-item :key="key" v-bind:val="item.id">
             <yd-flexbox style="padding: 15px 0;">
-              <img :src="item.logo">
+              <img :src="item.logo" >
               <yd-flexbox-item align="top">
                 {{item.title}}<br/>
                 <span style="color: #ef4f4f;"><em>¥</em> {{item.amount}}</span><br/>
                 <p>
-                  <yd-spinner :longpress="false" v-model="item.qty" max="50" width="1.4rem" v-on:change="changeQty"></yd-spinner>
+                  <yd-spinner :longpress="false" v-model="item.qty" max="50" width="1.4rem" :change="changeQty"></yd-spinner>
                 </p>
               </yd-flexbox-item>
             </yd-flexbox>
