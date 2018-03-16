@@ -2,7 +2,10 @@
   <div style="height: 100%;">
     <yd-layout>
       <yd-navbar slot="navbar" class="balanced" title="商城首页"></yd-navbar>
-      <yd-slider slot="navbar" autoplay="3000">
+      <div style="position: absolute;top:0;z-index: 999;width:100%; ">
+        <yd-search :result="result" fullpage v-model="value2" :item-click="itemClickHandler" :on-submit="submitHandler"></yd-search>
+      </div>
+      <yd-slider autoplay="3000">
         <yd-slider-item>
           <a href="http://www.ydcss.com">
             <img src="http://static.ydcss.com/uploads/ydui/1.jpg">
@@ -19,6 +22,7 @@
           </a>
         </yd-slider-item>
       </yd-slider>
+
       <yd-pullrefresh :callback="initList" ref="pullrefreshDemo">
         <yd-infinitescroll :callback="loadList" ref="infinitescrollDemo">
           <yd-list theme="4" slot="list">
@@ -101,7 +105,9 @@ export default {
     return {
       page: 1,
       pageSize: 10,
-      list: []
+      list: [],
+      value2: '',
+      result: []
     }
   },
   methods: {
@@ -134,6 +140,24 @@ export default {
         that.$refs.infinitescrollDemo.$emit('ydui.infinitescroll.finishLoad')
         that.page++
       })
+    },
+    getResult(val) {
+      if (!val) return [];
+      return [
+        'Apple', 'Banana', 'Orange', 'Durian', 'Lemon', 'Peach', 'Cherry', 'Berry',
+        'Core', 'Fig', 'Haw', 'Melon', 'Plum', 'Pear', 'Peanut', 'Other'
+      ].filter(value => new RegExp(val, 'i').test(value));
+    },
+    itemClickHandler(item) {
+      this.$dialog.toast({mes: `搜索：${item}`});
+    },
+    submitHandler(value) {
+      this.$dialog.toast({mes: `搜索：${value}`});
+    }
+  },
+  watch: {
+    value2(val) {
+      this.result = this.getResult(val);
     }
   }
 }
@@ -141,5 +165,34 @@ export default {
 <style>
   .yd-scrollview:after {
     height: 0px;
+  }
+  .yd-search-input>.search-input .search-icon:after {
+    color: #fff;
+  }
+  .yd-search {
+    background-color:rgba(255,255,255,0.3);
+    border: 0;
+  }
+  .yd-search-input {
+    background-color:rgba(255,255,255,0);
+    border: 0;
+  }
+  input::-webkit-input-placeholder { color:#0f0f0f; }
+  .yd-search-input>.search-input{
+    background-color:rgba(255,255,255,0.3);
+  }
+  input[disabled], input[readonly]:not(.cloned-text-input), select[disabled], select[readonly], textarea[disabled], textarea[readonly]:not(.cloned-text-input) {
+    background-color:rgba(255,255,255,0.2);
+  }
+  .yd-search-show .yd-search-input {
+    background-color: #efeff4;
+    border: 0;
+  }
+
+  .yd-search-input:before{
+    border:none;
+  }
+  .yd-search-input:after{
+    border:none;
   }
 </style>

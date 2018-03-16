@@ -11,6 +11,7 @@ import Category from './router/Category.vue'
 import Cart from './router/Cart.vue'
 import My from './router/My.vue'
 import Detail from './router/Detail.vue'
+import OrderConfirm from './router/OrderConfirm.vue'
 /* Page router end */
 
 import '../static/css/vonic.min.css'
@@ -33,7 +34,8 @@ const router = new VueRouter({
     {path: '/category', name: 'category', component: Category},
     {path: '/cart', name: 'cart', component: Cart},
     {path: '/my', name: 'my', component: My},
-    {path: '/detail', name: 'detail', component: Detail}
+    {path: '/detail', name: 'detail', component: Detail},
+    {path: '/orderConfirm', name: 'orderConfirm', component: OrderConfirm}
   ]
 })
 /* eslint-disable no-new */

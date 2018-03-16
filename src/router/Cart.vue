@@ -38,7 +38,7 @@
                     订单金额：<em>¥</em> {{totalAmount}}
                 </yd-flexbox-item>
                 <div class="settlement-btn">
-                    <a href="#">去结算</a>
+                    <a type="link" href="#/orderConfirm">去结算</a>
                 </div>
             </yd-flexbox>
         </div>
