@@ -40,4 +40,4 @@ const router = new VueRouter({
 new Vue({
   router: router,
   render: v => v(App)
-}).$mount('#app');
+}).$mount('#app')
