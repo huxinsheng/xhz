@@ -38,7 +38,7 @@
                     订单金额：<em>¥</em> {{totalAmount}}
                 </yd-flexbox-item>
                 <div class="settlement-btn">
-                    <a type="link" href="#/orderConfirm">去结算</a>
+                    <a type="link" href="#/confirmOrder">去结算</a>
                 </div>
             </yd-flexbox>
         </div>
@@ -48,7 +48,7 @@
   import $ from 'jquery'
 
   export default {
-    name: 'Cart',
+    name: 'cart',
     data () {
       return {
         cartItems: [],

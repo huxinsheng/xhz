@@ -75,7 +75,7 @@
   /** import $ from 'jquery' */
 
   export default {
-    name: 'Detail',
+    name: 'detail',
     methods: {
     },
     mounted () {

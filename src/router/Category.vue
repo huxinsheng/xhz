@@ -71,7 +71,7 @@
 /** import $ from 'jquery' */
 
 export default {
-  name: 'Home',
+  name: 'category',
   mounted () {
 
   },

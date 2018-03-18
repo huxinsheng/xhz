@@ -79,7 +79,7 @@ var loadData = function (page, pageSize, callback) {
   })
 }
 export default {
-  name: 'Home',
+  name: 'my',
   mounted () {
     let that = this
     loadData(this.page, this.pageSize, function (data) {
