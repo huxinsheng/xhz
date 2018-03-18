@@ -1,46 +1,81 @@
 <template>
   <div style="height: 100%;">
     <yd-layout>
-      <yd-navbar slot="navbar" class="balanced" title="商城首页"></yd-navbar>
-      <yd-slider slot="navbar" autoplay="3000">
-        <yd-slider-item>
-          <a href="http://www.ydcss.com">
-            <img src="http://static.ydcss.com/uploads/ydui/1.jpg">
-          </a>
-        </yd-slider-item>
-        <yd-slider-item>
-          <a href="http://www.ydcss.com">
-            <img src="http://static.ydcss.com/uploads/ydui/2.jpg">
-          </a>
-        </yd-slider-item>
-        <yd-slider-item>
-          <a href="http://www.ydcss.com">
-            <img src="http://static.ydcss.com/uploads/ydui/3.jpg">
-          </a>
-        </yd-slider-item>
-      </yd-slider>
-      <yd-pullrefresh :callback="initList" ref="pullrefreshDemo">
-        <yd-infinitescroll :callback="loadList" ref="infinitescrollDemo">
-          <yd-list theme="4" slot="list">
-            <yd-list-item v-for="item, key in list" :key="key">
-              <img slot="img" :src="item.img">
-              <span slot="title">{{item.title}}</span>
-              <yd-list-other slot="other">
-                <div>
-                  <span class="list-price"><em>¥</em>{{item.marketprice}}</span>
-                  <span class="list-del-price">¥{{item.productprice}}</span>
-                </div>
-                <div></div>
-              </yd-list-other>
-            </yd-list-item>
-          </yd-list>
-          <!-- 数据全部加载完毕显示 -->
-          <span slot="doneTip">别再拉啦，我是有底线的...</span>
-          <!-- 加载中提示，不指定，将显示默认加载中图标 -->
-          <yd-list-loading></yd-list-loading>
-        </yd-infinitescroll>
-      </yd-pullrefresh>
-      <yd-backtop></yd-backtop>
+      <div class="my-info-header">
+        <yd-navbar slot="navbar" bgcolor="" color="fff">
+          <router-link to="#" slot="left">
+            <div>设置</div>
+          </router-link>
+        </yd-navbar>
+        <div class="my-info-flexbox">
+          <yd-flexbox>
+            <yd-flexbox-item>
+              <div class="user-photo">
+                <img src="//gw.alicdn.com/sns_logo/i4/T15D4oXixBXXartXjX.gif">
+              </div>
+              <div class="user-nick">
+                胡新胜
+                <yd-icon slot="icon" class="icon iconfont icon-dengji" custom color="#808069" size="0.4rem"></yd-icon>
+              </div>
+              <div class="user-mobile">
+                13632505280
+              </div>
+            </yd-flexbox-item>
+          </yd-flexbox>
+          <div class="demo">
+            <div>
+              <div class="demo-rollnotice">
+                <yd-icon slot="icon" class="icon iconfont icon-tuiguang " custom color="#FFFF00"
+                         size="0.3rem"></yd-icon>
+                <yd-rollnotice autoplay="2000">
+                  <yd-rollnotice-item><span style="color:#4169E1;padding:0 5px;"> 荐 </span> 荣耀V9 3月超级钜惠！</yd-rollnotice-item>
+                  <yd-rollnotice-item><span style="color:#4169E1;padding:0 5px;"> 荐 </span> 3.23京东超级品牌日格力盛典</yd-rollnotice-item>
+                  <yd-rollnotice-item><span style="color:#4169E1;padding:0 5px;"> 荐 </span> 京东服饰 早春新品低至7折</yd-rollnotice-item>
+                </yd-rollnotice>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <yd-tabbar>
+        <yd-tabbar-item title="待付款" link="#">
+          <yd-icon slot="icon" class="icon iconfont icon-daizhifudingdan " custom color="#999"
+                   size="0.5rem"></yd-icon>
+        </yd-tabbar-item>
+        <yd-tabbar-item title="待发货" link="#">
+          <yd-icon slot="icon" class="icon iconfont icon-daifahuo " custom color="#999"
+                   size="0.5rem"></yd-icon>
+        </yd-tabbar-item>
+        <yd-tabbar-item title="待收货" link="#">
+          <yd-icon slot="icon" class="icon iconfont icon-daishouhuo " custom color="#999"
+                   size="0.5rem"></yd-icon>
+        </yd-tabbar-item>
+        <yd-tabbar-item title="待评价" link="#">
+          <yd-icon slot="icon" class="icon iconfont icon-pingjia " custom color="#999"
+                   size="0.5rem"></yd-icon>
+        </yd-tabbar-item>
+        <yd-tabbar-item title="退款/售后" link="#">
+          <yd-icon slot="icon" class="icon iconfont icon-tuikuantuihuo " custom color="#999"
+                   size="0.5rem"></yd-icon>
+          <yd-badge slot="badge" type="danger">2</yd-badge>
+        </yd-tabbar-item>
+      </yd-tabbar>
+      <div class="my-menu-list">
+        <yd-cell-group>
+          <yd-cell-item arrow>
+            <yd-icon slot="icon" name="order" color="#999" size=".42rem"></yd-icon>
+            <span slot="left">全部订单</span>
+            <span slot="right">查看全部订单</span>
+          </yd-cell-item>
+        </yd-cell-group>
+        <yd-cell-group>
+          <yd-cell-item arrow>
+            <yd-icon slot="icon" name="location" color="#999" size=".42rem"></yd-icon>
+            <span slot="left">收货地址</span>
+            <span slot="right"></span>
+          </yd-cell-item>
+        </yd-cell-group>
+      </div>
       <yd-tabbar slot="tabbar" active-color="#09BB07" fontsize="0.24rem">
         <yd-tabbar-item title="首页" type="link" link="/">
           <yd-icon name="home" slot="icon" size="0.5rem"></yd-icon>
@@ -60,85 +95,115 @@
 </template>
 
 <script>
-import $ from 'jquery'
+  import $ from 'jquery'
 
-var loadData = function (page, pageSize, callback) {
-  $.ajax({
-    url: 'http://list.ydui.org/getdata.php?type=backposition',
-    type: 'GET',
-    data: {
-      page: page,
-      pagesize: pageSize
+  export default {
+    name: 'my',
+    mounted () {
+
     },
-    /** 指定服务器返回的数据类型 */
-    dataType: 'jsonp',
-    success: function (data) {
-      callback(data)
-    }
-
-  })
-}
-export default {
-  name: 'my',
-  mounted () {
-    let that = this
-    loadData(this.page, this.pageSize, function (data) {
-      let _list = data
-      that.list = that.list.concat(_list)
-      if (_list.length < that.pageSize || that.page === 3) {
-        /** 所有数据加载完毕 */
-        that.$refs.infinitescrollDemo.$emit('ydui.infinitescroll.loadedDone')
-        return
-      }
-
-      /** 单次请求数据完毕 */
-      that.$refs.infinitescrollDemo.$emit('ydui.infinitescroll.finishLoad')
-
-      that.page++
-    })
-  },
-  data () {
-    return {
-      page: 1,
-      pageSize: 10,
-      list: []
-    }
-  },
-  methods: {
-    initList () {
-      let that = this
-      that.list = []
-      that.page = 1
-      loadData(that.page, that.pageSize, function (data) {
-        let _list = data
-        that.list = that.list.concat(_list)
-        that.$dialog.toast({
-          mes: _list.length > 0 ? '为您更新了' + _list.length + '条内容' : '已是最新内容'
-        })
-        that.$refs.pullrefreshDemo.$emit('ydui.pullrefresh.finishLoad')
-        that.$refs.infinitescrollDemo.$emit('ydui.infinitescroll.reInit')
-      })
+    data () {
+      return {}
     },
-    loadList () {
-      let that = this
-      loadData(that.page, that.pageSize, function (data) {
-        let _list = data
-        that.list = that.list.concat(_list)
-        if (_list.length < that.pageSize || that.page === 3) {
-          /** 所有数据加载完毕 */
-          that.$refs.infinitescrollDemo.$emit('ydui.infinitescroll.loadedDone')
-          return
-        }
-
-        /** 单次请求数据完毕 */
-        that.$refs.infinitescrollDemo.$emit('ydui.infinitescroll.finishLoad')
-        that.page++
-      })
-    }
+    methods: {}
   }
-}
 </script>
 <style>
+  .my-info-header .yd-navbar:after {
+    border-bottom: 0;
+  }
+
+  .my-info-header {
+    position: relative;
+    height: 3.8rem;
+    background: #d34201 url(//gw.alicdn.com/tfscom/TB10.51HFXXXXXqXpXXYx6l2pXX-750-235.jpg_q90) no-repeat top center;
+    background-size: cover;
+    color: #fff;
+    border-bottom: 0;
+  }
+
+  .my-info-header .my-info-flexbox {
+    padding: 0 15px;
+    text-align: center;
+  }
+
+  .my-info-header .my-info-flexbox .user-photo {
+    float: left;
+    width: 1.867rem;
+    height: 1.867rem;
+    text-align: center;
+    border-radius: 100%;
+    padding: .067rem;
+    background: rgba(255, 255, 255, .7);
+    -webkit-transform: translateZ(1px);
+    transform: translateZ(1px);
+    overflow: hidden;
+  }
+
+  .my-info-header .my-info-flexbox .user-photo img {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+  }
+
+  .my-info-header .my-info-flexbox .user-nick {
+    float: left;
+    width: 100%;
+    font-weight: bold;
+    padding-left: 2.2rem;
+    box-sizing: border-box;
+    margin-top: -1.2rem;
+    font-size: .4rem;
+    display: -webkit-box;
+    display: -moz-box;
+  }
+
+  .my-info-header .my-info-flexbox .user-mobile {
+    float: left;
+    width: 100%;
+    padding-left: 2.2rem;
+    box-sizing: border-box;
+    font-weight: bold;
+    margin-top: -.6rem;
+    font-size: .3rem;
+    display: -webkit-box;
+    display: -moz-box;
+  }
+
+  .my-info-flexbox .yd-rollnotice {
+    filter: Alpha(opacity=0);
+    position: static; /* IE6、7、8只能设置position:static(默认属性) ，否则会导致子元素继承Alpha值 */
+    *zoom: 1;
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  .my-info-flexbox .demo-rollnotice img {
+    width: 73px;
+    height: 16px;
+    margin-right: 4px;
+  }
+
+  .my-info-flexbox .demo-rollnotice {
+    margin-top: 10px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0 12px;
+  }
+
+  .my-menu-list {
+    margin-top: 10px;
+  }
+
+  .my-menu-list .yd-cell-box {
+    margin-bottom: 10px;
+  }
+
   .yd-scrollview:after {
     height: 0px;
   }

@@ -20,6 +20,7 @@ import OrderInfo from './router/OrderInfo.vue'
 /* Page router end */
 
 import '../static/css/vonic.min.css'
+import '../static/cust_font/iconfont.css'
 import 'vue-ydui/dist/ydui.base.css'
 import 'vue-ydui/dist/ydui.px.css'
 /* 使用px：import 'vue-ydui/dist/ydui.px.css'; */

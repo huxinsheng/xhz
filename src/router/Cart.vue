@@ -1,9 +1,9 @@
 <template>
     <yd-layout>
         <yd-navbar slot="navbar" title="我的购物车">
-            <router-link to="/" slot="left">
-                <yd-navbar-back-icon></yd-navbar-back-icon>
-            </router-link>
+          <div @click="$router.go(-1)" slot="left">
+            <yd-navbar-back-icon></yd-navbar-back-icon>
+          </div>
         </yd-navbar>
         <div>
             <yd-checklist class="cart-list" v-model="cartItems" ref="checkGoodsList" :callback="change" :label="false">
