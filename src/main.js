@@ -14,6 +14,9 @@ import ConfirmOrder from './router/ConfirmOrder.vue'
 import MyAddress from './router/MyAddress.vue'
 import EditAddress from './router/EditAddress.vue'
 import AddNewAddress from './router/AddNewAddress.vue'
+import MyOrder from './router/MyOrder.vue'
+import PayOrder from './router/PayOrder.vue'
+import OrderInfo from './router/OrderInfo.vue'
 /* Page router end */
 
 import '../static/css/vonic.min.css'
@@ -40,7 +43,10 @@ const router = new VueRouter({
     {path: '/confirmOrder', name: 'confirmOrder', component: ConfirmOrder},
     {path: '/myAddress', name: 'myAddress', component: MyAddress},
     {path: '/editAddress', name: 'editAddress', component: EditAddress},
-    {path: '/addNewAddress', name: 'addNewAddress', component: AddNewAddress}
+    {path: '/addNewAddress', name: 'addNewAddress', component: AddNewAddress},
+    {path: '/myOrder', name: 'myOrder', component: MyOrder},
+    {path: '/payOrder', name: 'payOrder', component: PayOrder},
+    {path: '/orderInfo', name: 'orderInfo', component: OrderInfo}
   ]
 })
 /* eslint-disable no-new */
